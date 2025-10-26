@@ -1,0 +1,39 @@
+---
+ISSUE 1
+EXCERPT: "I felt I that I would like see Om"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing "to" before "see" and extra "I" after "felt"
+FIX: "I felt that I would like to see Om"
+
+---
+ISSUE 2
+EXCERPT: "the sweeping tree-lined curve of Georgian terraced that lies"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: "Terraced" is incomplete - needs "houses" or similar noun
+FIX: "the sweeping tree-lined curve of Georgian terraced houses that lies"
+
+---
+ISSUE 3
+EXCERPT: "I was trying not squint"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing "to" before infinitive verb
+FIX: "I was trying not to squint"
+
+---
+ISSUE 4
+EXCERPT: "handrails are steel"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing article before "steel"
+FIX: "handrails are steel" or "handrails are made of steel"
+
+---
+ISSUE 5
+EXCERPT: "stairs are concrete"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing article; should be "are concrete" or "are made of concrete"
+FIX: "stairs are concrete" or "stairs are made of concrete"

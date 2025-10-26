@@ -1,0 +1,33 @@
+# Comprehensive Editorial Review
+
+---
+ISSUE 1
+EXCERPT: "I didn't think it would matter"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong pronoun—should be "It took"
+FIX: It took me all my powers
+
+---
+ISSUE 2
+EXCERPT: "peeling the sodden fabic away"
+CATEGORY: spelling
+SEVERITY: high
+PROBLEM: Spelling error - should be "fabric"
+FIX: peeling the sodden fabric away
+
+---
+ISSUE 3
+EXCERPT: "call in person"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: "Call in person" is contradictory - you either call or visit in person.
+FIX: visit in person
+
+---
+ISSUE 4
+EXCERPT: "Georgian terraced"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: "Georgian terraced" is incomplete - needs "houses" or "buildings."
+FIX: Georgian terraced houses

@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "types": ["jest", "node"]  // Only Jest types, no Mocha
+  },
+  "include": [
+    "src/**/*.test.ts",
+    "src/test/**/*.ts"
+  ]
+}

@@ -1,0 +1,6 @@
+== Notes on FramerD prose review tool
+
+=== Diagnostic severity
+We seem to be constrained by the VSCode diagnostics model to having four severity types: Error, Warning, Information and Hint. And icons to go with that, and a colour of squiggle too.
+
+That's not terrible, by any means. However it seems to ignore Category or Type of review totally. And there are types: Spelling, Grammar, PoV, Tense, Style, Voice, Praise, Remark. 

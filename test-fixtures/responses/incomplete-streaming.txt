@@ -1,0 +1,15 @@
+---
+ISSUE 1
+EXCERPT: "The cat sat on mat"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing article before "mat"
+FIX: "The cat sat on the mat"
+
+---
+ISSUE 2
+EXCERPT: "She runned quickly"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Incorrect past tense - should be "ran"
+FIX: "She ran

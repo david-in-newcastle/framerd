@@ -1,0 +1,25 @@
+# Review with Smart Quotes
+
+---
+ISSUE 1
+EXCERPT: "I didn't think it would matter"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong pronoun—should be "It took"
+FIX: It took me all my powers
+
+---
+ISSUE 2
+EXCERPT: 'We could be shooting dyke porn!'
+CATEGORY: style
+SEVERITY: low
+PROBLEM: Consider tone
+FIX: We could be filming adult content!
+
+---
+ISSUE 3
+EXCERPT: "À la caméra"
+CATEGORY: style
+SEVERITY: low
+PROBLEM: Foreign phrase might need context
+FIX: À la caméra—documentary style

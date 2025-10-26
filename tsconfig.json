@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2020",                    // ← Changed from ES5/ES6
+    "outDir": "out",
+    "lib": ["ES2020"],                     // ← Add this
+    "sourceMap": true,
+    "rootDir": "src",
+    "strict": true,
+    "esModuleInterop": true,               // ← Add this for default imports
+    "skipLibCheck": true,                  // ← Add this to skip node_modules type checking
+    "downlevelIteration": true             // ← Add this for spread operators
+  },
+  "exclude": [
+    "node_modules",
+    ".vscode-test"
+  ]
+}

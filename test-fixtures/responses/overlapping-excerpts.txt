@@ -1,0 +1,15 @@
+---
+ISSUE 1
+EXCERPT: "The cat sat on the mat"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Consider more vivid verb than "sat"
+FIX: "The cat lounged on the mat"
+
+---
+ISSUE 2
+EXCERPT: "cat sat on"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: This excerpt overlaps with ISSUE 1
+FIX: "cat perched on"

@@ -1,0 +1,176 @@
+{
+  "name": "framerd",
+  "displayName": "FramerD",
+  "description": "AI-powered prose review for fiction writers",
+  "version": "0.1.0",
+  "engines": {
+    "vscode": "^1.105.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onLanguage"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "framerd.review",
+        "title": "FramerD: Review Prose"
+      },
+      {
+        "command": "framerd.clearDiagnostics",
+        "title": "FramerD: Clear Diagnostics"
+      }
+    ],
+    "configuration": {
+      "title": "FramerD",
+      "properties": {
+        "framerd.dictionary": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "default": [],
+          "description": "Custom dictionary of accepted words (proper nouns, character names, invented terms)"
+        },
+        "framerd.defaultPrompt": {
+          "type": "string",
+          "default": "gentle",
+          "description": "Default prompt to use for prose review"
+        },
+        "framerd.prompts": {
+          "type": "object",
+          "default": {
+            "gentle": {
+              "temperature": 0.5,
+              "context": "Creative prose or literary fiction. The author values rhythm, voice, and emotional resonance.",
+              "behaviour": "Provide supportive, constructive feedback. Focus on what works and how to strengthen weak areas. Respect the author's voice and intent.",
+              "style_guide": null,
+              "style_notes": null,
+              "user_context": null
+            },
+            "strict": {
+              "temperature": 0.2,
+              "context": "Technical, academic, or formal writing where precision matters.",
+              "behaviour": "Apply rigorous standards for grammar, punctuation, and clarity. Flag ambiguity, awkward phrasing, and mechanical errors.",
+              "style_guide": "Strunk & White",
+              "style_notes": null,
+              "user_context": null
+            },
+            "bold": {
+              "temperature": 0.7,
+              "context": "Draft-stage fiction or creative work open to significant revision.",
+              "behaviour": "Give honest, direct feedback. Flag structural issues, weak passages, and missed opportunities. Suggest substantial rewrites when needed.",
+              "style_guide": null,
+              "style_notes": null,
+              "user_context": null
+            },
+            "british_formal": {
+              "temperature": 0.3,
+              "context": "Formal British English for professional or academic writing.",
+              "behaviour": "Apply British conventions for spelling, punctuation, and style. Be precise and traditional.",
+              "style_guide": "Hart's Rules",
+              "style_notes": "Use Oxford comma. Prefer 'towards', 'whilst', 'amongst'. Single quotes for quotations.",
+              "user_context": null
+            },
+            "deep": {
+              "temperature": 0.4,
+              "context": "Literary fiction with thematic depth, symbolism, or layered meaning.",
+              "behaviour": "Analyze not just mechanics but thematic coherence, symbolism, and emotional impact. Suggest improvements that enhance depth while respecting the author's vision.",
+              "style_guide": null,
+              "style_notes": null,
+              "user_context": null
+            },
+            "dialogue": {
+              "temperature": 0.3,
+              "context": "Fiction with significant dialogue. Focus on naturalness, attribution, and punctuation.",
+              "behaviour": "Check dialogue for authenticity, proper punctuation, clear attribution, and character voice consistency. Flag stilted or over-explained dialogue.",
+              "style_guide": null,
+              "style_notes": "Prefer 'said' for attribution. Avoid adverbs. Each speaker gets new paragraph.",
+              "user_context": null
+            }
+          },
+          "description": "Review presets with different approaches, style guides, and constraints",
+          "additionalProperties": {
+            "type": "object",
+            "properties": {
+              "temperature": {
+                "type": "number",
+                "minimum": 0,
+                "maximum": 1,
+                "description": "LLM temperature (0=focused, 1=creative)"
+              },
+              "context": {
+                "type": "string",
+                "description": "What kind of writing this is"
+              },
+              "behaviour": {
+                "type": "string",
+                "description": "How the reviewer should approach the text"
+              },
+              "style_guide": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Named style guide (e.g., 'Strunk & White', 'Hart's Rules', 'Chicago', 'AP')"
+              },
+              "style_notes": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Custom style rules or preferences"
+              },
+              "user_context": {
+                "type": [
+                  "string",
+                  "null"
+                ],
+                "description": "Project-specific context (character names, world details, intentional choices)"
+              }
+            },
+            "required": [
+              "temperature",
+              "context",
+              "behaviour"
+            ]
+          }
+        }
+      }
+    }
+  },
+ "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "npm run test:unit && npm run test:e2e",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
+    "test:unit:coverage": "jest --coverage",
+    "test:e2e": "vscode-test",
+    "test:coverage": "jest --coverage && open coverage/lcov-report/index.html"
+  },
+  "devDependencies": {
+    "@types/jest": "^30.0.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "@types/vscode": "^1.105.0",
+    "@typescript-eslint/eslint-plugin": "^8.45.0",
+    "@typescript-eslint/parser": "^8.45.0",
+    "@vscode/test-cli": "^0.0.11",
+    "@vscode/test-electron": "^2.5.2",
+    "eslint": "^9.36.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.5",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.67.0",
+    "dotenv": "^17.2.3"
+  }
+}

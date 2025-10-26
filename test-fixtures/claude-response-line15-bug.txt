@@ -1,0 +1,480 @@
+---
+ISSUE 1
+EXCERPT: "I felt I that I would like see Om"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing "to" before "see" and extra "I" after "felt"
+FIX: "I felt that I would like to see Om"
+
+---
+ISSUE 2
+EXCERPT: "the sweeping tree-lined curve of Georgian terraced that lies"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: "Terraced" is incomplete - needs "houses" or similar noun
+FIX: "the sweeping tree-lined curve of Georgian terraced houses that lies"
+
+---
+ISSUE 3
+EXCERPT: "I was trying not squint"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing "to" before infinitive verb
+FIX: "I was trying not to squint"
+
+---
+ISSUE 4
+EXCERPT: "handrails are steel"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing article before "steel"
+FIX: "handrails are steel" or "handrails are made of steel"
+
+---
+ISSUE 5
+EXCERPT: "stairs are concrete"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing article; should be "are concrete" or "are made of concrete"
+FIX: "stairs are concrete" or "stairs are made of concrete"
+
+---
+ISSUE 6
+EXCERPT: "walls painted breeze block"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing verb or article; unclear construction
+FIX: "walls are painted breeze block" or "walls of painted breeze block"
+
+---
+ISSUE 7
+EXCERPT: "I remember it as though I had, Two flights"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Comma splice; "Two" should not be capitalized mid-sentence
+FIX: "I remember it as though I had. Two flights"
+
+---
+ISSUE 8
+EXCERPT: "Two final flights, God I so want to run."
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing comma after "God" for interjection; awkward phrasing "I so want"
+FIX: "Two final flights, God, I so want to run."
+
+---
+ISSUE 9
+EXCERPT: "all of them, every one in white coveralls"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: "every one" should be "everyone" when referring to people collectively
+FIX: "all of them, everyone in white coveralls"
+
+---
+ISSUE 10
+EXCERPT: "The silence (The Silence!)."
+CATEGORY: clarity
+SEVERITY: low
+PROBLEM: Inconsistent capitalization within same sentence creates confusion
+FIX: "The silence (the silence!)." or maintain "The Silence" if it's a proper noun
+
+---
+ISSUE 11
+EXCERPT: "I've let Om know your here"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong homophone - should be "you're" (you are)
+FIX: "I've let Om know you're here"
+
+---
+ISSUE 12
+EXCERPT: "'I'll them introduce themselves"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing verb - should be "let them"
+FIX: "'I'll let them introduce themselves"
+
+---
+ISSUE 13
+EXCERPT: "They all new my name"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong word - should be "knew" (past tense of know)
+FIX: "They all knew my name"
+
+---
+ISSUE 14
+EXCERPT: "and says, 'Your not the usual kind"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong homophone - should be "You're" (you are)
+FIX: "and says, 'You're not the usual kind"
+
+---
+ISSUE 15
+EXCERPT: "More than few."
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing article before "few"
+FIX: "More than a few."
+
+---
+ISSUE 16
+EXCERPT: "I was loosing it."
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong spelling - should be "losing" (one 'o')
+FIX: "I was losing it."
+
+---
+ISSUE 17
+EXCERPT: "peeling the sodden fabic away"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Spelling error - should be "fabric"
+FIX: "peeling the sodden fabric away"
+
+---
+ISSUE 18
+EXCERPT: "they'd given me something that made _Clairty™_ seem like paracetamol"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Spelling error - should be "Clarity™"
+FIX: "they'd given me something that made _Clarity™_ seem like paracetamol"
+
+---
+ISSUE 19
+EXCERPT: "how come people don't talk about how come robots are so warm?"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: Repetitive "how come" creates awkward construction
+FIX: "why don't people talk about how warm robots are?"
+
+---
+ISSUE 20
+EXCERPT: "some in greens not whites"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: Missing article and unclear phrasing
+FIX: "some in greens, not whites" or "some in green coveralls, not white"
+
+---
+ISSUE 21
+EXCERPT: "with a weird light in her eye"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: Unclear - should be "in her hand" (holding a light) or clarify
+FIX: "with a penlight" or "shining a light in my eyes"
+
+---
+ISSUE 22
+EXCERPT: "I could have used a double Vodka too."
+CATEGORY: grammar
+SEVERITY: low
+PROBLEM: "Vodka" shouldn't be capitalized unless brand name
+FIX: "I could have used a double vodka too."
+
+---
+ISSUE 23
+EXCERPT: "I did have flash of perspective"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing article before "flash"
+FIX: "I did have a flash of perspective"
+
+---
+ISSUE 24
+EXCERPT: "'À la caméra_—"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Inconsistent formatting - opening italics but closing with underscore
+FIX: "_À la caméra_—" or "À la caméra—"
+
+---
+ISSUE 25
+EXCERPT: "When I wrote this, just a short while I ended with this line"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing word - should be "a short while ago" or "a short while later"
+FIX: "When I wrote this, just a short while ago, I ended with this line"
+
+---
+ISSUE 26
+EXCERPT: "some the things I said"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing "of" between "some" and "the"
+FIX: "some of the things I said"
+
+---
+ISSUE 27
+EXCERPT: "There was bit when I sat in with the Elon"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing article before "bit"
+FIX: "There was a bit when I sat in with the Elon"
+
+---
+ISSUE 28
+EXCERPT: "'cos I never hear of it. And people are nosy and I don't think your cannibals"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong homophone - should be "you're" (you are)
+FIX: "'cos I never hear of it. And people are nosy and I don't think you're cannibals"
+
+---
+ISSUE 29
+EXCERPT: "you'll  have seen movies"
+CATEGORY: grammar
+SEVERITY: low
+PROBLEM: Double space between "you'll" and "have"
+FIX: "you'll have seen movies"
+
+---
+ISSUE 30
+EXCERPT: "And your here, with us"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong homophone - should be "you're" (you are)
+FIX: "And you're here, with us"
+
+---
+ISSUE 31
+EXCERPT: "A while later,  I sat about chat with a little group"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Double space and wrong preposition - should be "sat about to chat" or "sat and chatted"
+FIX: "A while later, I sat and chatted with a little group"
+
+---
+ISSUE 32
+EXCERPT: "just like their's"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Incorrect possessive - "theirs" has no apostrophe
+FIX: "just like theirs"
+
+---
+ISSUE 33
+EXCERPT: "When I wrote this, just a short while I ended with this line"
+CATEGORY: prose_craft
+SEVERITY: moderate
+PROBLEM: This entire paragraph is duplicated from earlier - major repetition error
+FIX: Delete the duplicate paragraph starting with "When I wrote this..."
+
+---
+ISSUE 34
+EXCERPT: "There was bit when I sat in with the Elon and didn't say too much"
+CATEGORY: prose_craft
+SEVERITY: high
+PROBLEM: This paragraph and the following several are exact duplicates from earlier
+FIX: Delete all duplicate paragraphs from "There was bit when..." through "Or even things?"
+
+---
+ISSUE 35
+EXCERPT: "building habs like this one"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: "Habs" is jargon/abbreviation that hasn't been established; later uses "habitats"
+FIX: "building habitats like this one" (for consistency)
+
+---
+ISSUE 36
+EXCERPT: "the area were we sat"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong homophone - should be "where" (location)
+FIX: "the area where we sat"
+
+---
+ISSUE 37
+EXCERPT: "And  don't have any sense"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing subject pronoun and double space
+FIX: "And I don't have any sense"
+
+---
+ISSUE 38
+EXCERPT: "_Oh thank God. Because I am_."
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: Unclear what "I am" refers to - violent? Creative? Chaotic?
+FIX: Clarify: "_Oh thank God. Because I am all those things._" or specify which quality
+
+---
+ISSUE 39
+EXCERPT: "heat syncope (totally not _Clarity™_ abuse)"
+CATEGORY: clarity
+SEVERITY: low
+PROBLEM: Parenthetical undermines itself - suggests it WAS Clarity abuse
+FIX: Consider rephrasing for clarity of intent
+
+---
+ISSUE 40
+EXCERPT: "It does capture something of the naive robot becoming aware."
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Missing article before "naive"
+FIX: "It does capture something of a naive robot becoming aware."
+
+---
+ISSUE 41
+EXCERPT: "not much expression of  it robot culture"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Double space and missing "in" before "robot culture"
+FIX: "not much expression of it in robot culture"
+
+---
+ISSUE 42
+EXCERPT: "Truthfully, I think she could have survived almost anything given that we have two hundred and forty six doctors"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Numbers should be hyphenated when used as compound adjective
+FIX: "two hundred and forty-six doctors"
+
+---
+ISSUE 43
+EXCERPT: "I joined her in the shower and help her bathe."
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Tense inconsistency - "joined" is past, "help" is present
+FIX: "I joined her in the shower and helped her bathe."
+
+---
+ISSUE 44
+EXCERPT: "I wish I had give in to my impulse"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong verb form - should be "given"
+FIX: "I wish I had given in to my impulse"
+
+---
+ISSUE 45
+EXCERPT: "Mine too. I covered us both"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: Unclear antecedent - "Mine too" what? Clothes off?
+FIX: "I removed mine too. I covered us both" or "I undressed too. I covered us both"
+
+---
+ISSUE 46
+EXCERPT: "her breathing shifts and her body stirs"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Tense inconsistency - should be past tense to match "realised"
+FIX: "her breathing shifted and her body stirred"
+
+---
+ISSUE 47
+EXCERPT: "I will the lights on"
+CATEGORY: clarity
+SEVERITY: moderate
+PROBLEM: Unusual verb usage - "will" as verb is archaic/unclear
+FIX: "I willed the lights on" or "I turned the lights on"
+
+---
+ISSUE 48
+EXCERPT: "My non-existent heart skipped! (I tried _thorium battery_,. No good)."
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Comma before period inside parentheses
+FIX: "My non-existent heart skipped! (I tried _thorium battery_. No good.)"
+
+---
+ISSUE 49
+EXCERPT: "Are you planning on coming again?' (!)."
+CATEGORY: dialogue_punctuation
+SEVERITY: moderate
+PROBLEM: Exclamation point in parentheses after question mark creates confusion
+FIX: "Are you planning on coming again?' (!)" or clarify the intent
+
+---
+ISSUE 50
+EXCERPT: "yesterdays disgrace"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing apostrophe in possessive
+FIX: "yesterday's disgrace"
+
+---
+ISSUE 51
+EXCERPT: "And I really didn't mind."
+CATEGORY: prose_craft
+SEVERITY: low
+PROBLEM: Sentence fragment starting with "And" - acceptable stylistically but check if intentional
+FIX: No fix needed if stylistic choice; could combine with previous sentence
+
+---
+ISSUE 52
+EXCERPT: "having chucked the old one into a recycling bin,'Oh."
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Comma instead of period before opening quote
+FIX: "having chucked the old one into a recycling bin. 'Oh."
+
+---
+ISSUE 53
+EXCERPT: "And the Elon, had anticipated"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Unnecessary comma after subject
+FIX: "And the Elon had anticipated"
+
+---
+ISSUE 54
+EXCERPT: "About. The. _Clarity?_"
+CATEGORY: dialogue_punctuation
+SEVERITY: moderate
+PROBLEM: Question mark with periods creates confusion; should be exclamation or statement
+FIX: "About. The. _Clarity._" or "About the _Clarity_?"
+
+---
+ISSUE 55
+EXCERPT: "ask AnnetteTwo?'"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Question mark before closing quote when it's not a question in dialogue
+FIX: Check context - if Eve is asking Annette, keep; if statement, remove
+
+---
+ISSUE 56
+EXCERPT: "I took me all my powers"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong pronoun - should be "It took"
+FIX: "It took me all my powers"
+
+---
+ISSUE 57
+EXCERPT: "ask either her, me if is there anything"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Confused construction - "either her, me" and "if is there"
+FIX: "ask her—ask me—if there is anything" or "ask AnnetteTwo if there is anything"
+
+---
+ISSUE 58
+EXCERPT: "Being theraped (should be a word)"
+CATEGORY: grammar
+SEVERITY: moderate
+PROBLEM: Not a real word - "being in therapy" or "being treated"
+FIX: "Being therapized (should be a word)" or "Being in therapy"
+
+---
+ISSUE 59
+EXCERPT: "And what just what are you judging?"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Repeated "what" - should be one or the other
+FIX: "And just what are you judging?" or "And what are you judging?"
+
+---
+ISSUE 60
+EXCERPT: "Some if it is that drug"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong word - should be "of" not "if"
+FIX: "Some of it is that drug"
+

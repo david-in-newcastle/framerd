@@ -1,0 +1,23 @@
+---
+ISSUE 1
+EXCERPT: "The cat sat on mat"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing article before "mat"
+FIX: "The cat sat on the mat"
+
+---
+ISSUE 2
+EXCERPT: "She said hello
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Missing closing quote
+FIX: "She said "hello""
+
+---
+ISSUE 3
+EXCERPT: Its a nice day"
+CATEGORY: grammar
+SEVERITY: high
+PROBLEM: Wrong contraction - should be "It's" (it is)
+FIX: It's a nice day"
