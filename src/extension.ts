@@ -52,9 +52,6 @@ function parseNaturalLanguageResponse(response: string): ParsedSuggestion[] {
 }
 
 
-// read .env
-dotenv.config({ path: path.join(__dirname, '..', '.env') });
-
 // Create this once at the top level, outside the command handler
 const outputChannel = vscode.window.createOutputChannel('FramerD');
 
@@ -157,6 +154,18 @@ export function activate(context: vscode.ExtensionContext) {
 	// logger.debug('Congratulations, In activate()');
     let isStreamingActive = false;
     let streamAbortRequested = false;
+    
+    // Load .env from workspace root
+    const workspaceFolder = vscode.workspace.workspaceFolders?.[0]?.uri.fsPath;
+    if (workspaceFolder) {
+        dotenv.config({ path: path.join(workspaceFolder, '.env') });
+        logger.debug(`Loading .env from workspace: ${path.join(workspaceFolder, '.env')}`);
+    } else {
+        // Fallback to extension directory for development
+        dotenv.config({ path: path.join(__dirname, '..', '.env') });
+        logger.debug(`Loading .env from extension directory: ${path.join(__dirname, '..', '.env')}`);
+    }
+    
     const apiKey = process.env.ANTHROPIC_API_KEY; //OPENAI_API_KEY; // Changed from ANTHROPIC
     
     // Set up logger to use outputChannel
@@ -259,16 +268,8 @@ export function activate(context: vscode.ExtensionContext) {
             return;
         }
         
-        // Include custom dictionary in prompt
-        const config = vscode.workspace.getConfiguration('framerd');
-        const dictionary = config.get<string[]>('dictionary', []);
-        if (dictionary.length > 0) {
-            const dictSection = `\n\n---\n# CUSTOM DICTIONARY\nDo NOT flag these words as spelling errors: ${dictionary.join(', ')}\n---\n`;
-            prompt = prompt + dictSection;
-            logger.debug('Dictionary words included:', dictionary.join(', '));
-        } else {
-            logger.debug('No dictionary words configured');
-        }
+        // Dictionary is NOT sent to LLM - let it use context to judge.
+        // Client-side filtering will suppress words user explicitly adds to dictionary.
 
         // Clear existing diagnostics
         diagnosticCollection.clear();

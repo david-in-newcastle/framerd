@@ -3,6 +3,10 @@
   "displayName": "FramerD",
   "description": "AI-powered prose review for fiction writers",
   "version": "0.1.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/david-in-newcastle/framerd.git"
+  },
   "engines": {
     "vscode": "^1.105.0"
   },

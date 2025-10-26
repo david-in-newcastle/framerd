@@ -11,7 +11,6 @@ AI-powered prose review for fiction writers. FramerD analyzes your writing for g
 - **Smart Categorization**: Distinguishes between spelling errors and wrong word choices
 - **Fiction-Focused**: Understands literary style, dialogue, and narrative voice
 
-![FramerD in action](images/demo.gif)
 
 ## Requirements
 
