@@ -15,6 +15,7 @@ import {
 } from './parsing';
 
 import { extractMisspelledWord, isSpellingError } from './dictionary-utils';
+import { findExcerptPartialMatch } from './excerpt-matching';
 
 import { logger } from './logger';
 
@@ -69,6 +70,15 @@ let copilotWarningShown = false;
 
 // Sequential diagnostic counter (resets each review)
 let diagnosticCounter = 0;
+
+// Track suggestion outcomes for summary
+let suggestionStats = {
+    total: 0,
+    shown: 0,
+    noLocation: 0,  // Issues shown at line 1
+    filtered: 0,
+    partialMatches: 0  // Shown via partial matching
+};
 
 /**
  * Check if GitHub Copilot is active and warn user about conflicts (once per session)
@@ -276,6 +286,7 @@ export function activate(context: vscode.ExtensionContext) {
         suggestionMap.clear();
         usedRanges.length = 0;
         diagnosticCounter = 0; // Reset counter for new review
+        suggestionStats = { total: 0, shown: 0, noLocation: 0, filtered: 0, partialMatches: 0 }; // Reset stats
         isStreamingActive = true;
         streamAbortRequested = false;
 
@@ -300,7 +311,19 @@ export function activate(context: vscode.ExtensionContext) {
                 );
             });
             
-            vscode.window.showInformationMessage('FramerD: Review complete');
+            // Log summary
+            logger.debug('\n=== REVIEW SUMMARY ===');
+            logger.debug(`Total suggestions: ${suggestionStats.total}`);
+            logger.debug(`Shown at correct location: ${suggestionStats.shown}`);
+            logger.debug(`  - Via partial matching: ${suggestionStats.partialMatches}`);
+            logger.debug(`Shown at line 1 (no location): ${suggestionStats.noLocation}`);
+            logger.debug(`Filtered (dictionary): ${suggestionStats.filtered}`);
+            
+            const summaryMsg = `Review complete: ${suggestionStats.shown + suggestionStats.noLocation} issues` + 
+                              (suggestionStats.partialMatches > 0 ? ` (${suggestionStats.partialMatches} via partial match)` : '') +
+                              (suggestionStats.noLocation > 0 ? ` (${suggestionStats.noLocation} at line 1)` : '') +
+                              (suggestionStats.filtered > 0 ? `, ${suggestionStats.filtered} filtered` : '');
+            vscode.window.showInformationMessage(`FramerD: ${summaryMsg}`);
         } catch (error) {
             if (error instanceof Error && error.message.includes('aborted')) {
                 vscode.window.showWarningMessage('FramerD: Review cancelled');
@@ -416,6 +439,8 @@ async function callClaudeAPIStreaming(
 const usedRanges: vscode.Range[] = [];
 
 function addSuggestionAsDiagnostic(suggestion: ParsedSuggestion, text: string, editor: vscode.TextEditor) {
+    suggestionStats.total++;
+    
     logger.debug('=== ADD SUGGESTION DEBUG ===');
     logger.debug('Received suggestion:', suggestion.target_excerpt);
     logger.debug('Rewrite:', suggestion.rewrite);
@@ -432,6 +457,7 @@ function addSuggestionAsDiagnostic(suggestion: ParsedSuggestion, text: string, e
         
         if (word && dictionary.includes(word)) {
             logger.debug(`✓ Skipping spelling error for dictionary word: ${word}`);
+            suggestionStats.filtered++;
             return;
         } else if (word) {
             logger.debug(`✗ Word "${word}" not in dictionary: [${dictionary.join(', ')}]`);
@@ -445,14 +471,27 @@ function addSuggestionAsDiagnostic(suggestion: ParsedSuggestion, text: string, e
     
     // Try to find excerpt
     if (suggestion.target_excerpt) {
-        const index = text.indexOf(suggestion.target_excerpt);
+        let index = text.indexOf(suggestion.target_excerpt);
+        let matchLength = suggestion.target_excerpt.length;
+        let matchMethod = 'exact';
+        
+        // Try partial matching if exact match fails
+        if (index === -1) {
+            const partialMatch = findExcerptPartialMatch(text, suggestion.target_excerpt);
+            if (partialMatch !== null) {
+                index = partialMatch.index;
+                matchLength = partialMatch.length;
+                matchMethod = 'partial';
+                suggestionStats.partialMatches++;
+            }
+        }
         
         if (index !== -1) {
             const startPos = editor.document.positionAt(index);
-            const endPos = editor.document.positionAt(index + suggestion.target_excerpt.length);
+            const endPos = editor.document.positionAt(index + matchLength);
             range = new vscode.Range(startPos, endPos);
             
-            logger.debug(`Found at index ${index}, range: line ${startPos.line}, col ${startPos.character}-${endPos.character}`);
+            logger.debug(`Found via ${matchMethod} match at index ${index}, range: line ${startPos.line}, col ${startPos.character}-${endPos.character}`);
             
             // Check for overlaps
             const overlaps = usedRanges.some(usedRange => 
@@ -462,18 +501,17 @@ function addSuggestionAsDiagnostic(suggestion: ParsedSuggestion, text: string, e
             // Determine if this can be a quick fix
             const canQuickFix = isQuickFixable(suggestion) && !overlaps;
             
-            if (!canQuickFix) {
-                // Overlap or not quick-fixable → Hint only
-                severity = vscode.DiagnosticSeverity.Hint;
-                logger.debug('Marked as Hint (overlap or not quick-fixable)');
-            } else {
-                // Normal suggestion with fix
-                severity = suggestion.severity === 'high' ? vscode.DiagnosticSeverity.Error :
-                          suggestion.severity === 'moderate' ? vscode.DiagnosticSeverity.Warning :
-                          vscode.DiagnosticSeverity.Information;
+            // Always use actual severity (Error/Warning/Information - no Hints)
+            severity = suggestion.severity === 'high' ? vscode.DiagnosticSeverity.Error :
+                      suggestion.severity === 'moderate' ? vscode.DiagnosticSeverity.Warning :
+                      vscode.DiagnosticSeverity.Information;
+            
+            suggestionStats.shown++;
+            
+            if (canQuickFix) {
+                // Add to quick fix map and track range
                 usedRanges.push(range);
                 
-                // Add to quick fix map with sequential ID
                 const id = String(++diagnosticCounter);
                 suggestionMap.set(id, {
                     comment: suggestion.comment,
@@ -488,20 +526,36 @@ function addSuggestionAsDiagnostic(suggestion: ParsedSuggestion, text: string, e
                 diagnostic.source = 'FramerD';
                 diagnostic.code = id;
                 diagnostics.push(diagnostic);
-                diagnosticCollection.set(editor.document.uri, diagnostics);
-                return;
+                logger.debug('Added diagnostic with quick fix');
+            } else {
+                // Overlapping or not quick-fixable - show at correct location without quick fix
+                const diagnostic = new vscode.Diagnostic(range, suggestion.comment, severity);
+                diagnostic.source = 'FramerD';
+                diagnostics.push(diagnostic);
+                logger.debug('Added diagnostic without quick fix (overlap or not fixable)');
             }
+            
+            diagnosticCollection.set(editor.document.uri, diagnostics);
+            return;
         } else {
-            // Excerpt not found → place at top as Hint
-            range = new vscode.Range(0, 0, 0, 0);
-            severity = vscode.DiagnosticSeverity.Hint;
-            logger.debug('Excerpt not found, placing at top as Hint');
+            // Excerpt not found via exact or partial matching → place at line 1 with proper severity
+            const firstLine = editor.document.lineAt(0);
+            range = new vscode.Range(0, 0, 0, firstLine.text.length);
+            severity = suggestion.severity === 'high' ? vscode.DiagnosticSeverity.Error :
+                      suggestion.severity === 'moderate' ? vscode.DiagnosticSeverity.Warning :
+                      vscode.DiagnosticSeverity.Information;
+            suggestionStats.noLocation++;
+            logger.debug('Excerpt not found via exact or partial match, placing at line 1 with proper severity');
         }
     } else {
-        // No excerpt → place at top as Hint
-        range = new vscode.Range(0, 0, 0, 0);
-        severity = vscode.DiagnosticSeverity.Hint;
-        logger.debug('No excerpt, placing at top as Hint');
+        // No excerpt → place at line 1 with proper severity
+        const firstLine = editor.document.lineAt(0);
+        range = new vscode.Range(0, 0, 0, firstLine.text.length);
+        severity = suggestion.severity === 'high' ? vscode.DiagnosticSeverity.Error :
+                  suggestion.severity === 'moderate' ? vscode.DiagnosticSeverity.Warning :
+                  vscode.DiagnosticSeverity.Information;
+        suggestionStats.noLocation++;
+        logger.debug('No excerpt, placing at line 1 with proper severity');
     }
     
     // Create diagnostic without quick fix

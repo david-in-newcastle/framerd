@@ -163,8 +163,31 @@ describe('Dictionary functionality', () => {
         
         it.todo('adds word to workspace configuration when command is invoked');
         it.todo('removes diagnostic after adding word to dictionary');
-        it.todo('includes dictionary words in prompt');
+        it.todo('client-side filtering suppresses dictionary words (not sent to LLM)');
         it.todo('prevents duplicate words in dictionary');
         it.todo('shows "Add to dictionary" action only for spelling errors');
     });
+});
+
+describe('Suggestion statistics tracking', () => {
+    // These are more integration-level tests that would need mocking
+    // Documenting expected behavior:
+    
+    it.todo('tracks total suggestions received');
+    it.todo('tracks suggestions shown at correct location');
+    it.todo('tracks suggestions shown at line 1 (no location found)');
+    it.todo('tracks suggestions filtered by dictionary');
+    it.todo('logs summary at end of review');
+    it.todo('shows summary in notification message');
+});
+
+describe('Diagnostic placement', () => {
+    // Integration tests for diagnostic behavior
+    
+    it.todo('places diagnostics at correct location when excerpt found');
+    it.todo('places diagnostics on line 1 when excerpt not found');
+    it.todo('diagnostics at line 1 span entire first line');
+    it.todo('diagnostics at line 1 use proper severity (not Hint)');
+    it.todo('overlapping suggestions shown without quick fix');
+    it.todo('non-quick-fixable suggestions shown without quick fix');
 });
